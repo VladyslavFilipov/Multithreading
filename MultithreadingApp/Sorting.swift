@@ -34,7 +34,7 @@ class Sorting {
         return end - start
     }
     
-    func performAsyncSorting(_ sorting: ([Int]) -> (), _ number: Int ) -> (Int,Double) {
+    func performSorting(_ sorting: ([Int]) -> (), _ number: Int ) -> (Int,Double) {
         var time: Double = 0
         for _ in 0..<5 {
             let timeOfSorting = self.executionTimeInterval {

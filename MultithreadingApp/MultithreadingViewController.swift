@@ -14,13 +14,13 @@ class MultithreadingViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var sortTimeProgressView: UIProgressView!
     @IBOutlet weak var percentInformLabel: UILabel!
     
-    let sortType: [Sort] = [.quickSort, .mergeSort, .insertionSort, .selectionSort, .bubbleSort]
-    let arrayOfArraysSizes = [1000, 2000, 4000, 8000, 16000]
-    let insertion = DispatchQueue(label: "Insertion")
+    let insert = DispatchQueue(label: "Insert")
     let selection = DispatchQueue(label: "Selection")
     let bubble = DispatchQueue(label: "Bubble")
-    let quick = DispatchQueue(label: "Quick")
-    let merge = DispatchQueue(label: "Merge")
+    let operationQueue = OperationQueue()
+    
+    let sortType: [Sort] = [.quickSort, .mergeSort, .insertionSort, .selectionSort, .bubbleSort]
+    let arrayOfArraysSizes = [1000, 2000, 4000, 8000, 16000]
     let sort = SortingMethods()
     let sorting = Sorting()
     var progress: Float = 0
@@ -28,14 +28,14 @@ class MultithreadingViewController: UIViewController, UITableViewDelegate, UITab
         didSet { DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.sortTimeProgressView.progress = self.progress
-                self.percentInformLabel.text = "\(self.progress * 100) %"
-            }
+                self.percentInformLabel.text = String(format: "%.0f",self.sortTimeProgressView.progress * 100) + " % "
+            }   
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateTable()
+        setArrayOfTimeToStart()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,29 +63,36 @@ class MultithreadingViewController: UIViewController, UITableViewDelegate, UITab
         return view
     }
     
-    func updateTable() {
+    private func performAsyncSorting() {
         let iteration = 1.0/Float(sortType.count * arrayOfArraysSizes.count)
+        
+        operationQueue.addOperation { self.performSortingWith(sort: .quickSort, iteration, self.sort.quickSort(_:)) }
+        
+        operationQueue.addOperation { self.performSortingWith(sort: .mergeSort, iteration, self.sort.mergeSort(_:)) }
+        
+        insert.async { self.performSortingWith(sort: .insertionSort, iteration, self.sort.insertSort(_:)) }
+        
+        selection.async { self.performSortingWith(sort: .selectionSort, iteration, self.sort.selectSort(_:)) }
+        
+        bubble.async { self.performSortingWith(sort: .bubbleSort, iteration, self.sort.bubbleSort(_:)) }
+    }
+    
+    private func performSortingWith(sort: Sort, _ iteration: Float, _ sorting: ([Int]) -> ()) {
+        for index in 0..<5 { let value = self.sorting.performSorting(sorting, self.arrayOfArraysSizes[index])
+            self.arrayOfTime[sortType.index(of: sort)!][index] = String("For \(value.0) - " + String(format: "%.5f" ,value.1))
+            self.progress += iteration }
+    }
+    
+    @IBAction func restartButtonTapped(_ sender: Any) {
+        progress = 0
+        operationQueue.cancelAllOperations()
+        arrayOfTime.removeAll()
+        setArrayOfTimeToStart()
+        performAsyncSorting()
+    }
+    
+    private func setArrayOfTimeToStart() {
         for index in 0..<sortType.count { arrayOfTime.append([])
             for _ in 0..<arrayOfArraysSizes.count { arrayOfTime[index].append("Not done yet") } }
-        
-        quick.async {for index in 0..<5 { let value = self.sorting.performAsyncSorting(self.sort.quickSort(_:), self.arrayOfArraysSizes[index])
-            self.arrayOfTime[0][index] = String("For \(value.0) - " + String(format: "%.5f" ,value.1))
-            self.progress += iteration } }
-        
-        merge.async { for index in 0..<5 { let value = self.sorting.performAsyncSorting(self.sort.mergeSort(_:), self.arrayOfArraysSizes[index])
-            self.arrayOfTime[1][index] = String("For \(value.0) - " + String(format: "%.5f" ,value.1))
-            self.progress += iteration } }
-        
-        insertion.async { for index in 0..<5 { let value = self.sorting.performAsyncSorting(self.sort.insertSort(_:), self.arrayOfArraysSizes[index])
-            self.arrayOfTime[2][index] = String("For \(value.0) - " + String(format: "%.5f" ,value.1))
-            self.progress += iteration } }
-        
-        selection.async { for index in 0..<5 { let value = self.sorting.performAsyncSorting(self.sort.selectSort(_:), self.arrayOfArraysSizes[index])
-            self.arrayOfTime[3][index] = String("For \(value.0) - " + String(format: "%.5f" ,value.1))
-            self.progress += iteration } }
-        
-        bubble.async { for index in 0..<5 { let value = self.sorting.performAsyncSorting(self.sort.bubbleSort(_:), self.arrayOfArraysSizes[index])
-            self.arrayOfTime[4][index] = String("For \(value.0) - " + String(format: "%.5f" ,value.1))
-            self.progress += iteration } }
     }
 }

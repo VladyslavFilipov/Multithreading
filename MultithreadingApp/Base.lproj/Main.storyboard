@@ -14,30 +14,23 @@
         <!--Multithreading View Controller-->
         <scene sceneID="wkg-Re-7D6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XGe-6Q-uiv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="b6N-XS-n1a" customClass="MultithreadingViewController" customModule="MultithreadingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0st-hR-hDo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Middle time of 5 sort iterations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mi-yN-2eu">
-                                <rect key="frame" x="10" y="20" width="355" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1nX-Fa-cwx">
                                 <rect key="frame" x="0.0" y="638" width="375" height="24"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="267-iI-t3Q">
-                                        <rect key="frame" x="0.0" y="11.5" width="337.5" height="2.5"/>
+                                        <rect key="frame" x="0.0" y="11.5" width="332" height="2.5"/>
                                         <color key="tintColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="750" constant="337.5" id="mda-tb-cdf"/>
                                         </constraints>
                                     </progressView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brO-vP-Fz1">
-                                        <rect key="frame" x="342.5" y="0.0" width="32.5" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 % " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brO-vP-Fz1">
+                                        <rect key="frame" x="337" y="0.0" width="38" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -48,7 +41,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vtQ-d6-2IW">
-                                <rect key="frame" x="0.0" y="49" width="375" height="584"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="577"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortInfoCell" id="Rv2-ag-GrE" customClass="CustomTableViewCell" customModule="MultithreadingApp" customModuleProvider="target">
@@ -82,19 +75,41 @@
                                     <outlet property="delegate" destination="b6N-XS-n1a" id="52s-DT-6XK"/>
                                 </connections>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qgT-EC-h4w">
+                                <rect key="frame" x="10" y="20" width="365" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Middle time of 5 sort iterations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mi-yN-2eu">
+                                        <rect key="frame" x="0.0" y="0.0" width="295.5" height="36"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJp-eK-D3j">
+                                        <rect key="frame" x="315.5" y="0.0" width="49.5" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="restartButtonTapped:" destination="b6N-XS-n1a" eventType="touchUpInside" id="FlK-eQ-l6I"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1nX-Fa-cwx" firstAttribute="top" secondItem="vtQ-d6-2IW" secondAttribute="bottom" constant="5" id="1oQ-Jl-Wbs"/>
                             <constraint firstItem="1nX-Fa-cwx" firstAttribute="trailing" secondItem="BTz-Cp-tl0" secondAttribute="trailing" id="3ul-ST-6Mx"/>
-                            <constraint firstItem="vtQ-d6-2IW" firstAttribute="top" secondItem="9mi-yN-2eu" secondAttribute="bottom" constant="5" id="9bo-Gb-7BE"/>
                             <constraint firstItem="BTz-Cp-tl0" firstAttribute="bottom" secondItem="1nX-Fa-cwx" secondAttribute="bottom" constant="5" id="BBQ-9A-UeM"/>
                             <constraint firstItem="vtQ-d6-2IW" firstAttribute="leading" secondItem="BTz-Cp-tl0" secondAttribute="leading" id="F7o-Od-MSq"/>
-                            <constraint firstItem="BTz-Cp-tl0" firstAttribute="trailing" secondItem="9mi-yN-2eu" secondAttribute="trailing" constant="10" id="FvG-T0-Iv2"/>
-                            <constraint firstItem="9mi-yN-2eu" firstAttribute="top" secondItem="BTz-Cp-tl0" secondAttribute="top" id="Sze-uY-oo8"/>
+                            <constraint firstItem="BTz-Cp-tl0" firstAttribute="trailing" secondItem="qgT-EC-h4w" secondAttribute="trailing" id="Key-Pj-9Yo"/>
+                            <constraint firstItem="qgT-EC-h4w" firstAttribute="top" secondItem="BTz-Cp-tl0" secondAttribute="top" id="UvV-IU-nKc"/>
                             <constraint firstItem="1nX-Fa-cwx" firstAttribute="leading" secondItem="BTz-Cp-tl0" secondAttribute="leading" id="Y1y-Rw-buP"/>
-                            <constraint firstItem="9mi-yN-2eu" firstAttribute="leading" secondItem="BTz-Cp-tl0" secondAttribute="leading" constant="10" id="eo6-AB-nUA"/>
+                            <constraint firstItem="vtQ-d6-2IW" firstAttribute="top" secondItem="qgT-EC-h4w" secondAttribute="bottom" id="knX-uk-Bkh"/>
                             <constraint firstItem="vtQ-d6-2IW" firstAttribute="trailing" secondItem="BTz-Cp-tl0" secondAttribute="trailing" id="w6y-Pp-UZp"/>
+                            <constraint firstItem="qgT-EC-h4w" firstAttribute="leading" secondItem="BTz-Cp-tl0" secondAttribute="leading" constant="10" id="wo7-3F-odh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BTz-Cp-tl0"/>
                     </view>
@@ -104,6 +119,7 @@
                         <outlet property="tableView" destination="vtQ-d6-2IW" id="JfC-Qg-xy0"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XGe-6Q-uiv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1074.4000000000001" y="64.31784107946028"/>
         </scene>
