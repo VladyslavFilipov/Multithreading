@@ -89,7 +89,7 @@ class SortingMethods {
         }
     }
     
-    func selectionSort(_ array: [Int]) {
+    func selectSort(_ array: [Int]) {
         guard array.count > 1 else { return }
         
         var newArray = array

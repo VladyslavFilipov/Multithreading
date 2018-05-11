@@ -11,7 +11,7 @@
 		36BED4D720A4589B00A6BC4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BED4D520A4589B00A6BC4E /* Main.storyboard */; };
 		36BED4D920A4589C00A6BC4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BED4D820A4589C00A6BC4E /* Assets.xcassets */; };
 		36BED4DC20A4589C00A6BC4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BED4DA20A4589C00A6BC4E /* LaunchScreen.storyboard */; };
-		36BED4E420A458F100A6BC4E /* MultithreadingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BED4E320A458F100A6BC4E /* MultithreadingTableViewController.swift */; };
+		36BED4E420A458F100A6BC4E /* MultithreadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BED4E320A458F100A6BC4E /* MultithreadingViewController.swift */; };
 		36BED4E620A45D8D00A6BC4E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BED4E520A45D8D00A6BC4E /* CustomTableViewCell.swift */; };
 		36BED4E820A466D800A6BC4E /* SortingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BED4E720A466D800A6BC4E /* SortingMethods.swift */; };
 		36BED4EA20A4734300A6BC4E /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BED4E920A4734300A6BC4E /* Sorting.swift */; };
@@ -24,7 +24,7 @@
 		36BED4D820A4589C00A6BC4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36BED4DB20A4589C00A6BC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36BED4DD20A4589C00A6BC4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		36BED4E320A458F100A6BC4E /* MultithreadingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultithreadingTableViewController.swift; sourceTree = "<group>"; };
+		36BED4E320A458F100A6BC4E /* MultithreadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultithreadingViewController.swift; sourceTree = "<group>"; };
 		36BED4E520A45D8D00A6BC4E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		36BED4E720A466D800A6BC4E /* SortingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingMethods.swift; sourceTree = "<group>"; };
 		36BED4E920A4734300A6BC4E /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 			children = (
 				36BED4D120A4589B00A6BC4E /* AppDelegate.swift */,
 				36BED4E520A45D8D00A6BC4E /* CustomTableViewCell.swift */,
-				36BED4E320A458F100A6BC4E /* MultithreadingTableViewController.swift */,
+				36BED4E320A458F100A6BC4E /* MultithreadingViewController.swift */,
 				36BED4E720A466D800A6BC4E /* SortingMethods.swift */,
 				36BED4E920A4734300A6BC4E /* Sorting.swift */,
 				36BED4D520A4589B00A6BC4E /* Main.storyboard */,
@@ -146,7 +146,7 @@
 			files = (
 				36BED4E620A45D8D00A6BC4E /* CustomTableViewCell.swift in Sources */,
 				36BED4E820A466D800A6BC4E /* SortingMethods.swift in Sources */,
-				36BED4E420A458F100A6BC4E /* MultithreadingTableViewController.swift in Sources */,
+				36BED4E420A458F100A6BC4E /* MultithreadingViewController.swift in Sources */,
 				36BED4D220A4589B00A6BC4E /* AppDelegate.swift in Sources */,
 				36BED4EA20A4734300A6BC4E /* Sorting.swift in Sources */,
 			);

@@ -10,11 +10,11 @@ import Foundation
 import QuartzCore
 
 enum Sort: String {
-    case quickSort = "quickSort"
-    case mergeSort = "mergeSort"
-    case insertionSort = "insertionSort"
-    case selectionSort = "selectionSort"
-    case bubbleSort = "bubbleSort"
+    case quickSort = "Quick Sort"
+    case mergeSort = "Merge Sort"
+    case insertionSort = "Insertion Sort"
+    case selectionSort = "Selection Sort"
+    case bubbleSort = "Subble Sort"
 }
 
 class Sorting {
@@ -36,7 +36,7 @@ class Sorting {
     
     func performAsyncSorting(_ sorting: ([Int]) -> (), _ number: Int ) -> (Int,Double) {
         var time: Double = 0
-        for _ in 1...5 {
+        for _ in 0..<5 {
             let timeOfSorting = self.executionTimeInterval {
                 sorting(generateArray(number))
             }
