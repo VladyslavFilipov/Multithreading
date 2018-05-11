@@ -14,14 +14,12 @@ class MultithreadingViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var sortTimeProgressView: UIProgressView!
     @IBOutlet weak var percentInformLabel: UILabel!
     
-    let insert = DispatchQueue(label: "Insert")
-    let selection = DispatchQueue(label: "Selection")
-    let bubble = DispatchQueue(label: "Bubble")
+    let dispatchQueue = DispatchQueue.global()
     let operationQueue = OperationQueue()
     
     let sortType: [Sort] = [.quickSort, .mergeSort, .insertionSort, .selectionSort, .bubbleSort]
     let arrayOfArraysSizes = [1000, 2000, 4000, 8000, 16000]
-    let sort = SortingMethods()
+    let sortingMethod = SortingMethods()
     let sorting = Sorting()
     var progress: Float = 0
     var arrayOfTime = [[String]]() {
@@ -36,6 +34,7 @@ class MultithreadingViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         setArrayOfTimeToStart()
+        performAsyncSorting()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,15 +65,12 @@ class MultithreadingViewController: UIViewController, UITableViewDelegate, UITab
     private func performAsyncSorting() {
         let iteration = 1.0/Float(sortType.count * arrayOfArraysSizes.count)
         
-        operationQueue.addOperation { self.performSortingWith(sort: .quickSort, iteration, self.sort.quickSort(_:)) }
+        operationQueue.addOperation { self.performSortingWith(sort: .quickSort, iteration, self.sortingMethod.quickSort(_:)) }
+        operationQueue.addOperation { self.performSortingWith(sort: .mergeSort, iteration, self.sortingMethod.mergeSort(_:)) }
         
-        operationQueue.addOperation { self.performSortingWith(sort: .mergeSort, iteration, self.sort.mergeSort(_:)) }
-        
-        insert.async { self.performSortingWith(sort: .insertionSort, iteration, self.sort.insertSort(_:)) }
-        
-        selection.async { self.performSortingWith(sort: .selectionSort, iteration, self.sort.selectSort(_:)) }
-        
-        bubble.async { self.performSortingWith(sort: .bubbleSort, iteration, self.sort.bubbleSort(_:)) }
+        dispatchQueue.async { self.performSortingWith(sort: .insertionSort, iteration, self.sortingMethod.insertSort(_:)) }
+        dispatchQueue.async { self.performSortingWith(sort: .selectionSort, iteration, self.sortingMethod.selectSort(_:)) }
+        dispatchQueue.async { self.performSortingWith(sort: .bubbleSort, iteration, self.sortingMethod.bubbleSort(_:)) }
     }
     
     private func performSortingWith(sort: Sort, _ iteration: Float, _ sorting: ([Int]) -> ()) {
@@ -83,13 +79,13 @@ class MultithreadingViewController: UIViewController, UITableViewDelegate, UITab
             self.progress += iteration }
     }
     
-    @IBAction func restartButtonTapped(_ sender: Any) {
-        progress = 0
-        operationQueue.cancelAllOperations()
-        arrayOfTime.removeAll()
-        setArrayOfTimeToStart()
-        performAsyncSorting()
-    }
+//    @IBAction func startButtonTapped(_ sender: Any) {
+//        progress = 0
+//        operationQueue.cancelAllOperations()
+//        arrayOfTime.removeAll()
+//        setArrayOfTimeToStart()
+//        performAsyncSorting()
+//    }
     
     private func setArrayOfTimeToStart() {
         for index in 0..<sortType.count { arrayOfTime.append([])
